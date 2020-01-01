@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mariadb:
+    image: k0st/alpine-mariadb
+    environment:
+      MYSQL_DATABASE: ${DB}
+      MYSQL_USER: ${USR}
+      MYSQL_PASSWORD: ${PASS}
+    expose:
+      - "3306"
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    restart: always
+  web:
+    build: ./web
+    expose:
+      - "80"
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/www
