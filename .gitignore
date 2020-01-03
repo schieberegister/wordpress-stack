@@ -1,0 +1,4 @@
+mariadb/
+www/
+.DS_Store
+.env
